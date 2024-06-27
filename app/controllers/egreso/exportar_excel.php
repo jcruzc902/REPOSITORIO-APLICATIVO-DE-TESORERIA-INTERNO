@@ -143,8 +143,7 @@ $sql_egresos = "SELECT egresos.id_egresos as id_egresos,
     cargo.nombre_cargo as nombre_cargo,
     actividad_principal.nombre_actividad as nombre_actividad,
     subactividad.nombre_subactividad as nombre_subactividad,
-    egresos.id_anio_periodo as id_anio_periodo,
-    anio_periodo.anio_nt as anio_periodo,
+    egresos.anio_periodo as anio_periodo,
     egresos.monto as monto,
     concepto_giro.nombre_concepto_giro as nombre_concepto_giro,
     modalidad_pago.nombre_modalidad_pago as nombre_modalidad_pago,
@@ -182,7 +181,6 @@ $sql_egresos = "SELECT egresos.id_egresos as id_egresos,
     INNER JOIN tb_modalidad_pago as modalidad_pago ON modalidad_pago.id_modalidad_pago = egresos.id_modalidad_pago
     INNER JOIN tb_comprobantes as comprobantes ON comprobantes.id_comprobantes = egresos.id_comprobantes
     INNER JOIN tb_estado_egreso as estado_egreso ON estado_egreso.id_estado_egreso = egresos.id_estado_egreso
-    INNER JOIN tb_anio_nt as anio_periodo ON anio_periodo.id_anio_nt = egresos.id_anio_periodo
     INNER JOIN tb_usuarios as usuarios ON usuarios.id_usuario = egresos.id_usuario
     WHERE egresos.visible!=1 ";
 

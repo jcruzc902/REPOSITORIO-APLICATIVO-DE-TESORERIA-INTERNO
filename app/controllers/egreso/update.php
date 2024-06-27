@@ -16,7 +16,7 @@ $fecha_oficio = $_POST['fecha_oficio'];
 $id_cargo = $_POST['id_cargo'];
 $id_actividad_principal = $_POST['id_actividad_principal'];
 $id_subactividad = $_POST['id_subactividad'];
-$id_periodo = $_POST['id_periodo'];
+$anio_periodo = $_POST['anio_periodo'];
 $monto = floatval($_POST['monto']);
 $monto = number_format($monto,2,'.',''); //convertir int a decimal
 $id_concepto_giro = $_POST['id_concepto_giro'];
@@ -62,7 +62,7 @@ $sentencia = $pdo->prepare("UPDATE tb_egresos
     id_cargo_dependencia=:id_cargo_dependencia,
     id_actividad_dependencia=:id_actividad_dependencia,
     id_subactividad=:id_subactividad,
-    id_anio_periodo=:id_anio_periodo,
+    anio_periodo=:anio_periodo,
     monto=:monto,
     id_concepto_giro=:id_concepto_giro,
     id_modalidad_pago=:id_modalidad_pago,
@@ -102,7 +102,7 @@ $sentencia->bindParam('fecha_dependencia', $fecha_oficio);
 $sentencia->bindParam('id_cargo_dependencia', $id_cargo);
 $sentencia->bindParam('id_actividad_dependencia', $id_actividad_principal);
 $sentencia->bindParam('id_subactividad', $id_subactividad);
-$sentencia->bindParam('id_anio_periodo', $id_periodo);
+$sentencia->bindParam('anio_periodo', $anio_periodo);
 $sentencia->bindParam('monto', $monto);
 $sentencia->bindParam('id_concepto_giro', $id_concepto_giro);
 $sentencia->bindParam('id_modalidad_pago', $id_modalidad_pago);

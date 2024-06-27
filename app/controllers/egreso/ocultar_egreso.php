@@ -14,6 +14,7 @@ $visible = 1;
 
 //----------------------------------------------------------------------------------------
 
+
 /*OCULTA LOS DATOS DE EGRESOS (NO ELIMINA)*/ 
 $sentencia = $pdo->prepare("UPDATE tb_egresos 
 SET observacion_egreso=:observacion_egreso,

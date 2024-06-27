@@ -1,13 +1,15 @@
 <?php
+
 include ('../app/config.php');
 include ('../layout/sesion.php');
 
 include ('../layout/parte1.php');
 include ('../layout/mensajes.php');
 
-include ('../app/controllers/egreso/show_egreso.php');
+
 
 include ('../app/controllers/anio_nt/listado_de_anios.php');
+include ('../app/controllers/anio_periodo/listado_de_periodo.php');
 include ('../app/controllers/tipo_gasto/listado_tipo_gasto.php');
 include ('../app/controllers/cargo/listado_cargo.php');
 include ('../app/controllers/actividad_principal/listado_actividad_principal.php');
@@ -16,6 +18,7 @@ include ('../app/controllers/concepto_giro/listado_concepto_giro.php');
 include ('../app/controllers/modalidad_pago/listado_modalidad_pago.php');
 include ('../app/controllers/comprobante/listado_comprobante.php');
 include ('../app/controllers/estado_egreso/listado_de_estado_egreso.php');
+include ('../app/controllers/egreso/show_egreso.php');
 
 ?>
 
@@ -84,7 +87,7 @@ include ('../app/controllers/estado_egreso/listado_de_estado_egreso.php');
                                     </div>
 
 
-                                    <div class="form-group col-md-2" id="campo_anio_nt">
+                                    <div class="form-group col-md-2" id="">
                                         <label for="">Año</label>
                                         <select class="form-control " name="id_anio_nt" id="comboaniont"
                                             style="width:100%" required>
@@ -160,7 +163,7 @@ include ('../app/controllers/estado_egreso/listado_de_estado_egreso.php');
                                             value="<?php echo $siaf; ?>">
                                     </div>
 
-                                    <div class="form-group col-md-2" id="campo_anio_nt">
+                                    <div class="form-group col-md-2" id="">
                                         <label for="">Tipo de gasto</label>
                                         <select class="form-control " name="id_tipo_gasto" id="combotipogasto"
                                             style="width:100%">
@@ -223,7 +226,7 @@ include ('../app/controllers/estado_egreso/listado_de_estado_egreso.php');
                                     $subactividad_datos = $query_subactividad->fetchAll(PDO::FETCH_ASSOC);
                                     ?>
 
-                                    <div class="form-group col-md-3" id="campo_anio_nt">
+                                    <div class="form-group col-md-3" id="">
                                         <label for="">Cargo</label>
                                         <select class="form-control " name="id_cargo" id="combo_cargo"
                                             style="width:100%" required>
@@ -242,7 +245,7 @@ include ('../app/controllers/estado_egreso/listado_de_estado_egreso.php');
 
                                     </div>
 
-                                    <div class="form-group col-md-3" id="campo_anio_nt">
+                                    <div class="form-group col-md-3" id="">
                                         <label for="">Actividad Principal</label>
                                         <select class="form-control " name="id_actividad_principal" id="combo_actividad"
                                             style="width:100%" required>
@@ -262,7 +265,7 @@ include ('../app/controllers/estado_egreso/listado_de_estado_egreso.php');
 
                                     </div>
 
-                                    <div class="form-group col-md-2" id="campo_anio_nt">
+                                    <div class="form-group col-md-2" id="">
                                         <label for="">Sub Actividad</label>
                                         <select class="form-control " name="id_subactividad" id="combo_subactividad"
                                             style="width:100%" required>
@@ -282,23 +285,10 @@ include ('../app/controllers/estado_egreso/listado_de_estado_egreso.php');
 
                                     </div>
 
-                                    <div class="form-group col-md-2" id="campo_anio_nt">
+                                    <div class="form-group col-md-2" id="campo_periodo">
                                         <label for="">Año</label>
-                                        <select class="form-control " name="id_periodo" id="combo_periodo"
-                                            style="width:100%">
-                                            <option value="">SELECCIONAR</option>
-                                            <?php
-                                            foreach ($anios_datos as $anios_dato) {
-                                                $anio_periodo_tabla = $anios_dato['anio_nt'];
-                                                $id_anio_periodo = $anios_dato['id_anio_nt']; ?>
-                                                <option value="<?php echo $id_anio_periodo; ?>" <?php if ($anio_periodo_tabla == $anio_periodo) { ?> selected="selected" <?php } ?>>
-                                                    <?php echo $anio_periodo_tabla; ?>
-                                                </option>
-                                                <?php
-                                            }
-                                            ?>
-                                        </select>
-
+                                        <input type="text" class="form-control " name="anio_periodo"
+                                            value="<?php echo $anio_periodo ?>" onkeypress='return validaNumericos(event)'>
                                     </div>
 
 
@@ -355,7 +345,7 @@ include ('../app/controllers/estado_egreso/listado_de_estado_egreso.php');
                                             value="<?php echo $monto; ?>">
                                     </div>
 
-                                    <div class="form-group col-md-2" id="campo_anio_nt">
+                                    <div class="form-group col-md-2" id="">
                                         <label for="">Concepto de Giro</label>
                                         <select class="form-control " name="id_concepto_giro" id="combo_conceptogiro"
                                             style="width:100%">
@@ -375,7 +365,7 @@ include ('../app/controllers/estado_egreso/listado_de_estado_egreso.php');
 
                                     </div>
 
-                                    <div class="form-group col-md-2" id="campo_anio_nt">
+                                    <div class="form-group col-md-2" id="">
                                         <label for="">Modalidad de Pago</label>
                                         <select class="form-control " name="id_modalidad_pago" id="combo_modalidadpago"
                                             style="width:100%">
@@ -425,7 +415,7 @@ include ('../app/controllers/estado_egreso/listado_de_estado_egreso.php');
                                             value="<?php echo $nro_orden_servicio; ?>">
                                     </div>
 
-                                    <div class="form-group col-md-2" id="campo_anio_nt">
+                                    <div class="form-group col-md-2" id="">
                                         <label for="">Tipo de Comprobante</label>
                                         <select class="form-control " name="id_tipo_comprobante" id="combo_comprobante"
                                             style="width:100%">
@@ -524,7 +514,7 @@ include ('../app/controllers/estado_egreso/listado_de_estado_egreso.php');
                                             value="<?php echo $total_acumulado; ?>" readonly>
                                     </div>
 
-                                    <div class="form-group col-md-2" id="campo_anio_nt">
+                                    <div class="form-group col-md-2" id="">
                                         <label for="">Estado</label>
                                         <select class="form-control " name="id_estado_egreso" id="combo_estado"
                                             style="width:100%" required>
@@ -605,6 +595,10 @@ include ('../app/controllers/estado_egreso/listado_de_estado_egreso.php');
                                             theme: 'bootstrap4',
                                         });
 
+                                        $('#combo_periodo').select2({
+                                            theme: 'bootstrap4',
+                                        });
+
                                         $('#combo_conceptogiro').select2({
                                             theme: 'bootstrap4',
                                         });
@@ -621,9 +615,7 @@ include ('../app/controllers/estado_egreso/listado_de_estado_egreso.php');
                                             theme: 'bootstrap4',
                                         });
 
-                                        $('#combo_periodo').select2({
-                                            theme: 'bootstrap4',
-                                        });
+                                        
 
 
 

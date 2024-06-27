@@ -230,19 +230,8 @@ include ('../app/controllers/estado_egreso/listado_de_estado_egreso.php');
 
                                     <div class="form-group col-md-2" id="campo_periodo">
                                         <label for="">Año</label>
-                                        <select class="form-control " name="id_periodo" id="combo_periodo"
-                                            style="width:100%" >
-                                            <option value="">SELECCIONAR</option>
-                                            <?php
-                                            foreach ($anios_datos as $anios_dato) { ?>
-                                                <option value="<?php echo $anios_dato['id_anio_nt']; ?>">
-                                                    <?php echo $anios_dato['anio_nt']; ?>
-                                                </option>
-                                                <?php
-                                            }
-                                            ?>
-                                        </select>
-
+                                        <input type="text" class="form-control " name="anio_periodo"
+                                            placeholder="" onkeypress='return validaNumericos(event)'>
                                     </div>
 
 

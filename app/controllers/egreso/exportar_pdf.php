@@ -16,7 +16,7 @@ if (isset($_SESSION['busqueda_anio_nt'])) {
 } else {
     $anio_nt = "";
 }
-
+ 
 if (isset($_SESSION['busqueda_siaf'])) {
     $siaf = $_SESSION['busqueda_siaf'];
 } else {

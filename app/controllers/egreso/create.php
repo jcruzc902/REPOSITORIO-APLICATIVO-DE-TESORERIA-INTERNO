@@ -23,7 +23,7 @@ $fecha_oficio = $_POST['fecha_oficio'];
 $id_cargo = $_POST['id_cargo'];
 $id_actividad_principal = $_POST['id_actividad_principal'];
 $id_subactividad = $_POST['id_subactividad'];
-$id_periodo = $_POST['id_periodo'];
+$anio_periodo = $_POST['anio_periodo'];
 $monto = floatval($_POST['monto']);
 $monto = number_format($monto,2,'.',''); //convertir int a decimal
 
@@ -94,11 +94,11 @@ if ($contador == 1) {
     <?php
 } else {
     $sentencia = $pdo->prepare('INSERT INTO tb_egresos(proveido_conta,fecha_conta,asunto_conta,siaf,id_tipo_gasto,nt_diga,id_anio_nt_diga,proveido_diga,
-    fecha_diga,oficio_dependencia,fecha_dependencia,id_cargo_dependencia,id_actividad_dependencia,id_subactividad,id_anio_periodo,monto,id_concepto_giro,id_modalidad_pago,
+    fecha_diga,oficio_dependencia,fecha_dependencia,id_cargo_dependencia,id_actividad_dependencia,id_subactividad,anio_periodo,monto,id_concepto_giro,id_modalidad_pago,
     proveedor,ruc,nro_orden_compra,nro_orden_servicio,id_comprobantes,numero_comprobante,nro_cp_interno,nota_pago,fecha_giro,fecha_pago,observacion_egreso,
     informe,fecha_informe,resolucion_directoral,fecha_resolucion,total_egresos,total_acumulado,id_estado_egreso,visible,id_usuario,fyh_creacion) 
     VALUES (:proveido_conta,:fecha_conta,:asunto_conta,:siaf,:id_tipo_gasto,:nt_diga,:id_anio_nt_diga,:proveido_diga,:fecha_diga,:oficio_dependencia,
-    :fecha_dependencia,:id_cargo_dependencia,:id_actividad_dependencia,:id_subactividad,:id_anio_periodo,:monto,:id_concepto_giro,:id_modalidad_pago,:proveedor,:ruc,
+    :fecha_dependencia,:id_cargo_dependencia,:id_actividad_dependencia,:id_subactividad,:anio_periodo,:monto,:id_concepto_giro,:id_modalidad_pago,:proveedor,:ruc,
     :nro_orden_compra,:nro_orden_servicio,:id_comprobantes,:numero_comprobante,:nro_cp_interno,:nota_pago,:fecha_giro,:fecha_pago,:observacion_egreso,
     :informe,:fecha_informe,:resolucion_directoral,:fecha_resolucion,:total_egresos,:total_acumulado,:id_estado_egreso,:visible,:id_usuario,:fyh_creacion)');
 
@@ -116,7 +116,7 @@ if ($contador == 1) {
     $sentencia->bindParam('id_cargo_dependencia', $id_cargo);
     $sentencia->bindParam('id_actividad_dependencia', $id_actividad_principal);
     $sentencia->bindParam('id_subactividad', $id_subactividad);
-    $sentencia->bindParam('id_anio_periodo', $id_periodo);
+    $sentencia->bindParam('anio_periodo', $anio_periodo);
     $sentencia->bindParam('monto', $monto);
     $sentencia->bindParam('id_concepto_giro', $id_concepto_giro);
     $sentencia->bindParam('id_modalidad_pago', $id_modalidad_pago);
