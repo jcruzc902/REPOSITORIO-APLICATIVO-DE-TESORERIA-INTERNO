@@ -1,0 +1,160 @@
+<?php
+include ('../app/config.php');
+include ('../layout/sesion.php');
+
+include ('../layout/parte1.php');
+include ('../layout/mensajes.php');
+
+include ('../app/controllers/modalidad_tyt/listado_modalidad_tyt.php');
+include ('../app/controllers/concepto_tyt/listado_concepto_tyt.php');
+include ('../app/controllers/referencia_tyt/listado_referencia_tyt.php');
+include ('../app/controllers/dependencia_tyt/listado_dependencia_tyt.php');
+include ('../app/controllers/cuenta_tyt/listado_cuenta_tyt.php');
+include ('../app/controllers/resolucion_rectoral/listado_resolucion_tyt.php');
+include ('../app/controllers/situacion_tyt/listado_situacion_tyt.php');
+include ('../app/controllers/tipo_tyt/listado_tipo_tyt.php');
+
+?>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0"><b>Importar datos de Tasas y Tarifas</b></h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="<?php echo $URL; ?>"><i class="bi bi-house-door-fill"></i>
+                                Inicio</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo $URL; ?>/tasas_tarifas"><i
+                                    class="bi bi-bar-chart-fill"></i> Tasas y Tarifas</a></li>
+                        <li class="breadcrumb-item active"><i class="bi bi-clipboard-check"></i> Importar datos de Tasas
+                            y Tarifas</a></li>
+                    </ol>
+                </div>
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+
+    <!-- Main content -->
+    <div class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-dark">
+                        <div class="card-header">
+                            <h3 class="card-title">Importe el archivo Excel para cargar los datos sobre tasas y tarifas</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                                        class="fas fa-minus"></i>
+                                </button>
+                            </div>
+
+                        </div>
+
+                        <div class="card-body" style="display: inline;">
+                            <form action="../app/controllers/tasas_tarifas/importar_xlsx.php" method="post" enctype="multipart/form-data">
+                                <input type="text" name="id_usuario" value="<?php echo $id_usuario_sesion; ?>" hidden>
+
+                                <div class="form-row">
+
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="">Archivo</label>
+                                            <input class="form-control-file" type="file" name="dataTasas_Tarifas" required>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="form-group col-md-12" align="right">
+                                        <button type="submit" class="btn btn-primary"><i class="bi bi-floppy-fill"></i>
+                                            Guardar</button>
+                                        <a href="index" class="btn" style="background-color: grey; color: white;"><i
+                                                class="bi bi-x-circle-fill"></i> Cancelar</a>
+
+                                    </div>
+                                </div>
+
+                                <script>
+                                    function validaNumericos(event) {
+                                        if ((event.charCode >= 48 && event.charCode <= 57)) {
+                                            return true;
+                                        }
+
+                                        if ((event.charCode == 45)) {
+                                            return true;
+                                        }
+
+                                        if ((event.charCode == 46)) {
+                                            return true;
+                                        }
+                                        return false;
+                                    }
+                                </script>
+
+                                <script>
+                                    $(document).ready(function () {
+
+                                        $('#combo_modalidad').select2({
+                                            theme: 'bootstrap4',
+                                        });
+
+                                        $('#combo_concepto').select2({
+                                            theme: 'bootstrap4',
+                                        });
+
+                                        $('#combo_referencia').select2({
+                                            theme: 'bootstrap4',
+                                        });
+
+                                        $('#combo_dependencia').select2({
+                                            theme: 'bootstrap4',
+                                        });
+
+                                        $('#combo_cuenta').select2({
+                                            theme: 'bootstrap4',
+                                        });
+
+                                        $('#combo_resolucion').select2({
+                                            theme: 'bootstrap4',
+                                        });
+
+                                        $('#combo_situacion').select2({
+                                            theme: 'bootstrap4',
+                                        });
+
+                                        $('#combo_tipo').select2({
+                                            theme: 'bootstrap4',
+                                        });
+
+
+
+
+                                    });
+                                </script>
+
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+<?php include ('../layout/parte2.php'); ?>
